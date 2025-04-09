@@ -8,6 +8,8 @@ import { ThemeProvider } from 'next-themes';
 import Link from 'next/link';
 import './globals.css';
 import React from 'react';
+import logo from '@/public/icon.png';
+import Image from 'next/image';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -43,7 +45,10 @@ export default function RootLayout({
               <nav className='flex h-16 w-full justify-center border-b border-b-foreground/10'>
                 <div className='flex w-full max-w-5xl items-center justify-between p-3 px-5 text-sm'>
                   <div className='flex items-center gap-5 font-semibold'>
-                    <Link href={'/'}>Next.js Supabase Starter</Link>
+                    <Link href={'/'} className='flex items-center gap-2'>
+                      <Image src={logo} alt='logo' width={50} height={50} />
+                      <span>Melo&apos;s base project</span>
+                    </Link>
                     <div className='flex items-center gap-2'>
                       <DeployButton />
                     </div>
@@ -55,18 +60,7 @@ export default function RootLayout({
                 {children}
               </div>
 
-              <footer className='mx-auto flex w-full items-center justify-center gap-8 border-t py-16 text-center text-xs'>
-                <p>
-                  Powered by{' '}
-                  <a
-                    href='https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs'
-                    target='_blank'
-                    className='font-bold hover:underline'
-                    rel='noreferrer'
-                  >
-                    Supabase
-                  </a>
-                </p>
+              <footer className='flex w-full items-center justify-center gap-8 border-t text-center text-xs'>
                 <ThemeSwitcher />
               </footer>
             </div>
